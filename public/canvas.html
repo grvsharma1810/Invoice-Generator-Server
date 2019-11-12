@@ -1,0 +1,40 @@
+<html>
+<head></head>
+<body>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <canvas id="myCanvas" width="600" height="800" style="border:1px solid black;"></canvas>
+  <form id="getForm" action="/savetodatabase" method="POST">
+    <input type="text" name="imgURL" id="imgURL">
+    <button id="submit">Submit</button>
+  </form>
+  <script>
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	ctx.font = "Bold 30px Arial";
+  ctx.fillText("Ankit Printers",0,30);
+  ctx.font = "20px Arial";
+  ctx.fillText("Lorem ipsum dolor sit amet, consectetur adipiscing elit.",0,60);
+  ctx.fillText("-------------------------------------------------------------------------------------------",0,80);
+  ctx.font = "Bold 20px Arial";
+  ctx.fillText("S.No. |            Particulars            |   Qty   |     Rate    |    Amount  ",0,95);
+  ctx.font = "20px Arial";
+  ctx.fillText("-------------------------------------------------------------------------------------------",0,110);
+  ctx.fillText("-------------------------------------------------------------------------------------------",0,700);
+  ctx.fillText("TOTAL -",400,715);
+  ctx.fillText("-------------------------------------------------------------------------------------------",0,727);
+  var date = new Date().toLocaleString();
+  ctx.font = "17px Arial";
+  ctx.fillText("Date : "+date,380,790);
+  ctx.fillText("*This is digitally generated bill.",0,790);
+  var img = canvas.toDataURL();
+  $("#imgURL").val(img);
+   $(document).ready(function() {
+     $("#submit").click();
+   });
+  console.log(img)
+  </script>
+</body>
+</html>

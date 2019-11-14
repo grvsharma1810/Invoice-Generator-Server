@@ -8,6 +8,7 @@ app.use(bodyParser.json());
 app.use('/public',express.static('public'));
 app.set("view engine","ejs");
 
+items = {}
 obj1 = {
     name : "Gaurav Kumar Sharma",
     sentFrom : "Server",
@@ -23,6 +24,19 @@ obj2 = {
 }
 var orgName = ""
 var address = ""
+
+//Items will be added here
+app.post("/additems",function(req,res){
+    console.log(req.body);
+    /*obj = {
+        name : req.body.name,        
+        quantity : req.body.quantity,        
+        amount : req.body.amount,
+        rate : req.body.rate
+    }*/
+    items = req.body
+    res.json(req.body);
+})
 
 // temporary route
 app.post("/temp",function(req,res){
@@ -46,7 +60,7 @@ app.get("/index",function(req,res){
 })
 
 app.get("/save",function(req,res){
-    res.render("canvas",{orgName : orgName,address:address});
+    res.render("canvas",{orgName : orgName,address:address,items:items});
 })
 
 app.post("/savetodatabase",function(req,res){

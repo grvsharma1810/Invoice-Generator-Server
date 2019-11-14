@@ -22,6 +22,27 @@
   ctx.fillText("S.No. |                 Particulars                 |   Qty   |    Rate    |     Amount   ",30,125);
   ctx.font = "20px Arial";
   ctx.fillText("------------------------------------------------------------------------------------------------------------",30,140);
+  ctx.font = "17px Arial";
+  start = 170
+  i=1
+  '<%items.forEach(function(item){%>'    
+    ctx.fillText(i+".",40,start)
+    ctx.fillText('<%=item.name%>',110,start)
+    ctx.fillText('<%=item.rate%>',370,start)
+    ctx.fillText('<%=item.quantity%>',440,start)
+    ctx.fillText('<%=item.amount%>',530,start) 
+    i = i + 1 
+    start = start + 30
+  '<%})%>'
+  /*ctx.fillText("1.",40,170)
+  ctx.fillText('<%=items.name%>',110,170)
+  ctx.fillText('<%=items.rate%>',370,170)
+  ctx.fillText('<%=items.quantity%>',440,170)
+  ctx.fillText('<%=items.amount%>',530,170)
+  */
+  //ctx.fillText("  1.           First Item                                               2              15 RS.            30 RS. ",35,170);
+
+  ctx.font = "20px Arial";
   ctx.fillText("------------------------------------------------------------------------------------------------------------",30,730);
   ctx.fillText("TOTAL -",430,745);
   ctx.fillText("------------------------------------------------------------------------------------------------------------",30,757);

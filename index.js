@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 
 app.use('/public',express.static('public'));
 app.set("view engine","ejs");
+var port = process.env.PORT || 8000;
 
 items = {}
 obj1 = {
@@ -73,6 +74,6 @@ app.get("*",function(req,res){
     res.send("PAGE RENDERED!!, Go Back and save it.");
 })
 
-app.listen(8000,function(){
-    console.log("Server Started at port 8000");
+app.listen(port,function(){
+    console.log("Server Started at port "+port);
 })

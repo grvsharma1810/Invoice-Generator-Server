@@ -7,9 +7,10 @@ app.use(bodyParser.json());
 
 app.use('/public',express.static('public'));
 app.set("view engine","ejs");
-var port = process.env.PORT || 8000;
 
-items = {}
+var port=process.env.PORT || 3000;
+
+items = []
 obj1 = {
     name : "Gaurav Kumar Sharma",
     sentFrom : "Server",
@@ -61,7 +62,7 @@ app.get("/index",function(req,res){
 })
 
 app.get("/save",function(req,res){
-    res.render("canvas",{orgName : orgName,address:address,items:items});
+    res.render("canvas",{orgName : orgName,address:address,items:items})
 })
 
 app.post("/savetodatabase",function(req,res){
@@ -75,5 +76,5 @@ app.get("*",function(req,res){
 })
 
 app.listen(port,function(){
-    console.log("Server Started at port "+port);
+    console.log("Server Started at port " + port);
 })

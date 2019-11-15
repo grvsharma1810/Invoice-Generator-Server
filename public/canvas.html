@@ -5,35 +5,56 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-  <canvas id="myCanvas" width="600" height="800" style="border:1px solid black;"></canvas>
+  <canvas id="myCanvas" width="640" height="840" style="border:1px solid black;"></canvas>
   <form id="getForm" action="/savetodatabase" method="POST">
     <input type="text" name="imgURL" id="imgURL">
-    <button id="submit">Submit</button>
+    <button id="submit">Confirm</button>
   </form>
   <script>
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
 	ctx.font = "Bold 30px Arial";
-  ctx.fillText("Ankit Printers",0,30);
+  ctx.fillText('<%=orgName%>',30,60);
   ctx.font = "20px Arial";
-  ctx.fillText("Lorem ipsum dolor sit amet, consectetur adipiscing elit.",0,60);
-  ctx.fillText("-------------------------------------------------------------------------------------------",0,80);
+  ctx.fillText('<%=address%>',30,90);
+  ctx.fillText("------------------------------------------------------------------------------------------------------------",30,110);
   ctx.font = "Bold 20px Arial";
-  ctx.fillText("S.No. |            Particulars            |   Qty   |     Rate    |    Amount  ",0,95);
+  ctx.fillText("S.No. |                 Particulars                 |   Qty   |    Rate    |     Amount   ",30,125);
   ctx.font = "20px Arial";
-  ctx.fillText("-------------------------------------------------------------------------------------------",0,110);
-  ctx.fillText("-------------------------------------------------------------------------------------------",0,700);
-  ctx.fillText("TOTAL -",400,715);
-  ctx.fillText("-------------------------------------------------------------------------------------------",0,727);
+  ctx.fillText("------------------------------------------------------------------------------------------------------------",30,140);
+  ctx.font = "17px Arial";
+  start = 170
+  i=1
+  '<%items.forEach(function(item){%>'    
+    ctx.fillText(i+".",40,start)
+    ctx.fillText('<%=item.name%>',110,start)
+    ctx.fillText('<%=item.rate%>',370,start)
+    ctx.fillText('<%=item.quantity%>',440,start)
+    ctx.fillText('<%=item.amount%>',530,start) 
+    i = i + 1 
+    start = start + 30
+  '<%})%>'
+  /*ctx.fillText("1.",40,170)
+  ctx.fillText('<%=items.name%>',110,170)
+  ctx.fillText('<%=items.rate%>',370,170)
+  ctx.fillText('<%=items.quantity%>',440,170)
+  ctx.fillText('<%=items.amount%>',530,170)
+  */
+  //ctx.fillText("  1.           First Item                                               2              15 RS.            30 RS. ",35,170);
+
+  ctx.font = "20px Arial";
+  ctx.fillText("------------------------------------------------------------------------------------------------------------",30,730);
+  ctx.fillText("TOTAL -",430,745);
+  ctx.fillText("------------------------------------------------------------------------------------------------------------",30,757);
   var date = new Date().toLocaleString();
   ctx.font = "17px Arial";
-  ctx.fillText("Date : "+date,380,790);
-  ctx.fillText("*This is digitally generated bill.",0,790);
+  ctx.fillText("Date : "+date,380,820);
+  ctx.fillText("*This is digitally generated bill.",30,820);
   var img = canvas.toDataURL();
   $("#imgURL").val(img);
-   $(document).ready(function() {
-     $("#submit").click();
-   });
+  //  $(document).ready(function() {
+  //    $("#submit").click();
+  //  });
   console.log(img)
   </script>
 </body>
